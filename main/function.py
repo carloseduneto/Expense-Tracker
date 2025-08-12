@@ -57,14 +57,24 @@ data = {
 
 import click
 
-@click.command()
-@click.option("--name", prompt="Digite seu nome", help="Nome da pessoa a cumprimentar.")
-@click.option("--repeat", default=1, help="Quantas vezes repetir a saudação.")
-def hello(name, repeat):
-    """Exibe uma saudação personalizada."""
-    for _ in range(repeat):
-        click.echo(f"Olá, {name}!")
+@click.command(name="addExpense")
+@click.option("--description", prompt="Type expense's name:", help="Expense's name:")
+@click.argument("amount")
+def addExpense(description, amount):
+    data={
+        "id": 3,
+        "description":description,
+        "amount":amount
+    }
+    additemToJson(data)
+
+@click.group()
+def expensesTracker():
+    pass
+
+expensesTracker.add_command(addExpense)
+
 
 if __name__ == "__main__":
-    hello()
+    expensesTracker()
 
