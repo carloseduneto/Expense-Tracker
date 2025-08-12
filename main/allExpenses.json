@@ -1,7 +1,12 @@
 [
     {
-        "id":1,
-        "description":"lunch",
-        "amount":20.49
+        "id": 1,
+        "description": "lunch",
+        "amount": 20.49
+    },
+    {
+        "id": 2,
+        "description": "Lettuce",
+        "amount": 2.48
     }
 ]

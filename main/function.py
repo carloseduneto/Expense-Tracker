@@ -18,7 +18,7 @@ Here are some additional features that you can add to the application:
 """
 import json
 import os
-fileName = "main\allExpenses.json"
+fileName = "main/allExpenses.json"
 
 # Create a JSON file
 def createJsonFile(data):
@@ -51,7 +51,7 @@ data = {
     "amount" : 2.48
 }
 
-additemToJson(data)
+# additemToJson(data)
 
 # expense-tracker add --description "Lunch" --amount 20
 
