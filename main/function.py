@@ -55,3 +55,16 @@ data = {
 
 # expense-tracker add --description "Lunch" --amount 20
 
+import click
+
+@click.command()
+@click.option("--name", prompt="Digite seu nome", help="Nome da pessoa a cumprimentar.")
+@click.option("--repeat", default=1, help="Quantas vezes repetir a saudação.")
+def hello(name, repeat):
+    """Exibe uma saudação personalizada."""
+    for _ in range(repeat):
+        click.echo(f"Olá, {name}!")
+
+if __name__ == "__main__":
+    hello()
+
