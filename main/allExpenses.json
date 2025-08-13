@@ -1,17 +1,50 @@
 [
     {
         "id": 1,
+        "date": "2025-08-13 09:48:59",
         "description": "lunch",
         "amount": 20.49
     },
     {
         "id": 2,
+        "date": "2025-08-13 09:49:00",
         "description": "Lettuce",
         "amount": 2.48
     },
     {
         "id": 3,
+        "date": "2025-08-13 09:49:01",
         "description": "Milk",
         "amount": "21.20"
+    },
+    {
+        "id": 4,
+        "date": "2025-08-13 09:49:02",
+        "description": "Hamburguer",
+        "amount": "15.99"
+    },
+    {
+        "id": 5,
+        "date": "2025-08-13 09:49:03",
+        "description": "Blueberry",
+        "amount": "8.90"
+    },
+    {
+        "id": 6,
+        "date": "2025-08-13 09:49:04",
+        "description": "Strawberry",
+        "amount": "7.96"
+    },
+    {
+        "id": 7,
+        "date": "2025-08-13 09:49:07",
+        "description": "Banana",
+        "amount": "1.99"
+    },
+    {
+        "id": 8,
+        "date": "2025-08-13 09:50:58",
+        "description": "Banana",
+        "amount": "1.99"
     }
 ]

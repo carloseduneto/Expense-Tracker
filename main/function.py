@@ -18,6 +18,7 @@ Here are some additional features that you can add to the application:
 """
 import json
 import os
+import datetime
 fileName = "main/allExpenses.json"
 
 # Create a JSON file
@@ -34,19 +35,35 @@ def listAllitems():
     
 #Add new item to list
 def addNewItem(item, allitems):
+    item["id"]=(allitems[-1]["id"])+1
     allitems.append(item)
     return allitems
 
 
-#Add new Task to JSON
+#Add new item to JSON
 def additemToJson(itemRegistry):
     listOfitems = listAllitems()
     listOfitemsAdded = addNewItem(itemRegistry, listOfitems)
     createJsonFile(listOfitemsAdded)
     print("sucessfull added")
 
+
+#Update tasks
+def updateTasksJson(itemSelect, newNameToItem, parameterToUpdate):
+    listOfItems =  listAllitems()
+    for i in range(len(listOfItems)):
+        if(listOfItems[i]["id"]==itemSelect["id"]):
+            listOfItems[i][parameterToUpdate] = newNameToItem
+    # print(listOfItems)
+
+    createJsonFile(listOfItems)
+
+now = datetime.datetime.now()
+now = now.strftime("%Y-%m-%d %H:%M:%S")
+
 data = {
     "id" : 2,
+    "date": now,
     "description" : "Lettuce",
     "amount" : 2.48
 }
@@ -57,16 +74,31 @@ data = {
 
 import click
 
-@click.command(name="addExpense")
+@click.command(name="add")
 @click.option("--description", prompt="Type expense's name:", help="Expense's name:")
 @click.argument("amount")
 def addExpense(description, amount):
     data={
-        "id": 3,
+        "id": 0,
+        "date": now,
         "description":description,
         "amount":amount
     }
     additemToJson(data)
+
+
+@click.command(name="update")
+@click.option("--id", prompt="Type expense's id:", help="Expense's id:")
+@click.argument("amount")
+def updateExpense(description, amount):
+    data={
+        "id": 0,
+        "date": now,
+        "description":description,
+        "amount":amount
+    }
+    additemToJson(data)
+
 
 @click.group()
 def expensesTracker():
@@ -75,6 +107,8 @@ def expensesTracker():
 expensesTracker.add_command(addExpense)
 
 
+
 if __name__ == "__main__":
+    # print(now)
     expensesTracker()
 
