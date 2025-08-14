@@ -2,14 +2,14 @@
     {
         "id": 1,
         "date": "2025-08-13 09:48:59",
-        "description": "lunch",
+        "description": "Dinner",
         "amount": 20.49
     },
     {
         "id": 2,
         "date": "2025-08-13 09:49:00",
         "description": "Lettuce",
-        "amount": 2.48
+        "amount": "1.98"
     },
     {
         "id": 3,
@@ -44,7 +44,7 @@
     {
         "id": 8,
         "date": "2025-08-13 09:50:58",
-        "description": "Banana",
+        "description": "Watermelon",
         "amount": "1.99"
     }
 ]

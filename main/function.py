@@ -49,24 +49,19 @@ def additemToJson(itemRegistry):
 
 
 #Update tasks
-def updateTasksJson(itemSelect, newNameToItem, parameterToUpdate):
+def updateItemJson(itemSelect, newNameToItem, parameterToUpdate):
     listOfItems =  listAllitems()
     for i in range(len(listOfItems)):
-        if(listOfItems[i]["id"]==itemSelect["id"]):
+        if(listOfItems[i]["id"]==itemSelect):
             listOfItems[i][parameterToUpdate] = newNameToItem
-    # print(listOfItems)
 
     createJsonFile(listOfItems)
 
 now = datetime.datetime.now()
 now = now.strftime("%Y-%m-%d %H:%M:%S")
 
-data = {
-    "id" : 2,
-    "date": now,
-    "description" : "Lettuce",
-    "amount" : 2.48
-}
+
+
 
 # additemToJson(data)
 
@@ -86,25 +81,41 @@ def addExpense(description, amount):
     }
     additemToJson(data)
 
-
+#Update
 @click.command(name="update")
 @click.option("--id", prompt="Type expense's id:", help="Expense's id:")
-@click.argument("amount")
-def updateExpense(description, amount):
-    data={
-        "id": 0,
-        "date": now,
-        "description":description,
-        "amount":amount
-    }
-    additemToJson(data)
+@click.argument("parameter")
+@click.argument("new")
+def update(id, new, parameter):
+    updateItemJson(int(id), new, parameter)
 
+
+
+#List
+@click.command()
+def list():
+    allitems = listAllitems()
+    print(
+            "ID ","\t",
+            "AMOUNT\t\t",
+            "DESCRIPTION\t\t",
+            "DATE\t",
+        )
+    for i in range (len(allitems)):
+        print(
+        allitems[i]["id"],"\t",
+        allitems[i]["amount"], "\t\t",
+        allitems[i]["description"], "\t\t",
+        allitems[i]["date"], "\t",
+        )
 
 @click.group()
 def expensesTracker():
     pass
 
 expensesTracker.add_command(addExpense)
+expensesTracker.add_command(update)
+expensesTracker.add_command(list)
 
 
 
