@@ -73,13 +73,14 @@ def deleteitemJson(taskSelect):
 def sumItemJSON(month):
     listOfitems = listAllitems()
     sumTotal = 0
+    currentyear = datetime.datetime.now().year
     if(month==0):
         for i in range(len(listOfitems)):
             sumTotal += float(listOfitems[i]["amount"])
     else:
         for i in range(len(listOfitems)):
             listOfitems[i]["date"] = datetime.strptime(listOfitems[i]["date"], "%Y-%m-%d %H:%M:%S")
-            if((listOfitems[i]["date"]).month==month):
+            if listOfitems[i]["date"].month == month and listOfitems[i]["date"].year == currentyear:
                 sumTotal += float(listOfitems[i]["amount"])
 
 
