@@ -48,7 +48,7 @@ def additemToJson(itemRegistry):
     print("sucessfull added")
 
 
-#Update tasks
+#Update items
 def updateItemJson(itemSelect, newNameToItem, parameterToUpdate):
     listOfItems =  listAllitems()
     for i in range(len(listOfItems)):
@@ -56,6 +56,17 @@ def updateItemJson(itemSelect, newNameToItem, parameterToUpdate):
             listOfItems[i][parameterToUpdate] = newNameToItem
 
     createJsonFile(listOfItems)
+
+#Delete items
+def deleteitemJson(taskSelect):
+    listOfitems = listAllitems()
+    for i in range(len(listOfitems)):
+        if(listOfitems[i]["id"]==int(taskSelect)):
+            print("item founded")
+            listOfitems.pop(i)
+            print("Deleted Task!")
+            break
+    createJsonFile(listOfitems)
 
 now = datetime.datetime.now()
 now = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -109,6 +120,12 @@ def list():
         allitems[i]["date"], "\t",
         )
 
+#Delete
+@click.command()
+@click.option("--id", prompt="Type expnese id: ", help="--id {id want to delete}")
+def delete(id):
+    deleteitemJson(id)
+
 @click.group()
 def expensesTracker():
     pass
@@ -116,6 +133,7 @@ def expensesTracker():
 expensesTracker.add_command(addExpense)
 expensesTracker.add_command(update)
 expensesTracker.add_command(list)
+expensesTracker.add_command(delete)
 
 
 
