@@ -19,6 +19,7 @@ Here are some additional features that you can add to the application:
 import json
 import os
 import datetime
+from datetime import datetime
 fileName = "main/allExpenses.json"
 
 # Create a JSON file
@@ -68,7 +69,24 @@ def deleteitemJson(taskSelect):
             break
     createJsonFile(listOfitems)
 
-now = datetime.datetime.now()
+#Sum items
+def sumItemJSON(month):
+    listOfitems = listAllitems()
+    sumTotal = 0
+    if(month==0):
+        for i in range(len(listOfitems)):
+            sumTotal += float(listOfitems[i]["amount"])
+    else:
+        for i in range(len(listOfitems)):
+            listOfitems[i]["date"] = datetime.strptime(listOfitems[i]["date"], "%Y-%m-%d %H:%M:%S")
+            if((listOfitems[i]["date"]).month==month):
+                sumTotal += float(listOfitems[i]["amount"])
+
+
+    return sumTotal 
+
+
+now = datetime.now()
 now = now.strftime("%Y-%m-%d %H:%M:%S")
 
 
@@ -126,6 +144,21 @@ def list():
 def delete(id):
     deleteitemJson(id)
 
+#Summary
+@click.command()
+@click.option(    
+    "--month",
+    type=int,
+    default=0,            
+    required=False,          
+    help="Mês (1-12), opcional"
+)
+def summary(month):
+    if month == 0:
+        print("Total expense (all months): R$", sumItemJSON(0))
+    else:
+        print(f"Total expense for month {month}: R$", sumItemJSON(month))
+
 @click.group()
 def expensesTracker():
     pass
@@ -134,6 +167,7 @@ expensesTracker.add_command(addExpense)
 expensesTracker.add_command(update)
 expensesTracker.add_command(list)
 expensesTracker.add_command(delete)
+expensesTracker.add_command(summary)
 
 
 
