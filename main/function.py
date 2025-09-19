@@ -102,12 +102,14 @@ import click
 @click.command(name="add")
 @click.option("--description", prompt="Type expense's name:", help="Expense's name:")
 @click.argument("amount")
-def addExpense(description, amount):
+@click.option("--category", prompt="Type expense's category:", help="Expense's category:")
+def addExpense(description, amount, category):
     data={
         "id": 0,
         "date": now,
         "description":description,
-        "amount":amount
+        "amount":amount,
+        "category":category,
     }
     additemToJson(data)
 
@@ -129,15 +131,26 @@ def list():
             "ID ","\t",
             "AMOUNT\t\t",
             "DESCRIPTION\t\t",
+            "CATEGORY\t",
             "DATE\t",
         )
     for i in range (len(allitems)):
-        print(
-        allitems[i]["id"],"\t",
-        allitems[i]["amount"], "\t\t",
-        allitems[i]["description"], "\t\t",
-        allitems[i]["date"], "\t",
-        )
+        if allitems[i].get("category") is not None:
+            print(
+            allitems[i]["id"],"\t",
+            allitems[i]["amount"], "\t\t",
+            allitems[i]["description"], "\t\t",
+            allitems[i]["category"], "\t\t",
+            allitems[i]["date"], "\t",
+            )
+        else:
+            print(
+            allitems[i]["id"],"\t",
+            allitems[i]["amount"], "\t\t",
+            allitems[i]["description"], "\t\t",
+            " ", "\t\t",
+            allitems[i]["date"], "\t",
+            )
 
 #Delete
 @click.command()
