@@ -1,0 +1,52 @@
+{
+    "dados": [
+        "dado 1",
+        "dado 2",
+        "dado 3",
+        "dado 4",
+        "dado 5"
+    ],
+    "informações": [
+        "informação 1",
+        "informação 2",
+        "informação 3",
+        "informação 4",
+        "informação 5"
+    ],
+    "exemplos": [
+        "exemplo 1",
+        "exemplo 2",
+        "exemplo 3",
+        "exemplo 4",
+        "exemplo 5"
+    ]
+}
+
+[
+    {
+        "dados":"dado 1",
+        "informações":"informação 1",
+        "exemplos":"exemplo 1"
+    },
+    {
+        "dados":"dado 2",
+        "informações":"informação 2",
+        "exemplos":"exemplo 2"
+    },
+    {
+        "dados":"dado 3",
+        "informações":"informação 3",
+        "exemplos":"exemplo 3"
+    },
+    {
+        "dados":"dado 4",
+        "informações":"informação 4",
+        "exemplos":"exemplo 4"
+    },
+    {
+        "dados":"dado 5",
+        "informações":"informação 5",
+        "exemplos":"exemplo 5"
+    },
+
+]

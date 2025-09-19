@@ -18,7 +18,7 @@ Here are some additional features that you can add to the application:
 """
 import json
 import os
-import datetime
+
 from datetime import datetime
 fileName = "main/allExpenses.json"
 
@@ -73,7 +73,7 @@ def deleteitemJson(taskSelect):
 def sumItemJSON(month):
     listOfitems = listAllitems()
     sumTotal = 0
-    currentyear = datetime.datetime.now().year
+    currentyear = datetime.now().year
     if(month==0):
         for i in range(len(listOfitems)):
             sumTotal += float(listOfitems[i]["amount"])
